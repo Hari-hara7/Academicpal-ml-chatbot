@@ -141,7 +141,7 @@ class MLNotesFinderModel:
         # Get the best matching training example
         best_match = self.training_df.iloc[best_match_idx]
         
-        # Return the result
+        # Return the resultt
         return {
             'success': True,
             'message': f"Found notes for {best_match['subject']} in {best_match['cycle']} cycle.",
