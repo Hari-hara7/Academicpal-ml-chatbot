@@ -1,8 +1,8 @@
-<<<<<<< HEAD
+
 ![AcademicPal AI](responsive.png)
-=======
-![AcademicPal AI](./assets/logo_academic_pal.png)
->>>>>>> b952f5fb26cc27bdac944536c6bc5804ee3dc665
+
+
+
 
 # 📚 AcademicPal AI Search
 
@@ -17,13 +17,13 @@
 ## 📖 About AcademicPal AI Search
 AcademicPal AI is a smart academic search engine designed to provide students with AI-powered assistance in finding notes and resources for various subjects. It leverages **Flask** and **machine learning** for intelligent search and **Vite + React** for a fast, modern UI.
 
-<<<<<<< HEAD
+
 ![AcademicPal AI](Designer (4).jpeg)
 
-=======
->>>>>>> b952f5fb26cc27bdac944536c6bc5804ee3dc665
+
+
 ## 🔧 Installation
-```sh
+
 # Clone the repository
 git clone https://github.com/yourusername/AcademicPal-AI.git
 
@@ -39,13 +39,12 @@ python app.py
 ```
 
 ## 👨‍💻 Contributors
-<<<<<<< HEAD
+
 - **[Hariharanath](https://github.com/Hari-hara7)** - Founder & Lead Developer
 - **[Teja](https://github.com/GunaTeja777)** - ML Developer
-=======
-- **Hariharanath** - Founder & Lead Developer
-- **[Your Name]** - Contributor
->>>>>>> b952f5fb26cc27bdac944536c6bc5804ee3dc665
+
+
+
 
 ## 🎯 Features
 - 🔎 AI-powered search for academic notes
