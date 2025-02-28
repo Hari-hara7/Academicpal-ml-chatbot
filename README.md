@@ -1,57 +1,88 @@
-# 📚 AcademicPal AI - Smart Notes Search
+# 📚 AcademicPal AI Search
 
-![AcademicPal AI](responsive.png)
+![AcademicPal AI](https://your-image-url.com/logo.png)
 
-## 🚀 About AcademicPal AI
-AcademicPal AI is an intelligent notes search assistant designed to help students find relevant study materials instantly. Built with a powerful frontend and an AI-driven backend, it simplifies the way students access notes for various subjects like Python, Math, Physics, and more.
+🚀 **AcademicPal AI Search** is an AI-powered assistant designed to help students find notes, resources, and explanations for B.Tech subjects. Built with an advanced **machine learning model** and a modern **Vite + React** frontend, it delivers seamless and intelligent search capabilities.
+
+## 🌟 Features
+- 🔍 AI-powered search for academic notes
+- 📖 Supports multiple subjects like Python, Math, Physics, and Chemistry
+- ✨ Fully responsive UI with **React + Tailwind CSS**
+- ⚡ Fast and efficient with **Flask-based ML model**
+- 🔗 Detects and formats links in responses automatically
 
 ---
 
 ## 🛠️ Tech Stack
 
-| Frontend | Backend (ML) |
-|----------|--------------|
-| ![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white) ![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB) ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white) ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white) | ![Flask](https://img.shields.io/badge/Flask-000000?style=for-the-badge&logo=flask&logoColor=white) ![Pandas](https://img.shields.io/badge/Pandas-150458?style=for-the-badge&logo=pandas&logoColor=white) ![Scikit-Learn](https://img.shields.io/badge/Scikit_Learn-F7931E?style=for-the-badge&logo=scikit-learn&logoColor=white) ![NLTK](https://img.shields.io/badge/NLTK-32A852?style=for-the-badge&logo=nltk&logoColor=white) ![NumPy](https://img.shields.io/badge/NumPy-013243?style=for-the-badge&logo=numpy&logoColor=white) |
+### 🚀 Frontend  
+| Tech               | Icon                                                                                 | Purpose                                  |  
+|--------------------|-------------------------------------------------------------------------------------|------------------------------------------|  
+| **React**         | ![React](https://img.shields.io/badge/-React-61DAFB?logo=react&logoColor=white)      | UI development                           |  
+| **TypeScript**    | ![TypeScript](https://img.shields.io/badge/-TypeScript-3178C6?logo=typescript)      | Static typing for scalability            |  
+| **Tailwind CSS**  | ![Tailwind](https://img.shields.io/badge/-Tailwind_CSS-38B2AC?logo=tailwindcss)     | Styling                                  |  
+| **Vite**          | ![Vite](https://img.shields.io/badge/-Vite-646CFF?logo=vite)                        | Fast frontend tooling                    |  
+| **Lucide Icons**  | ![Lucide](https://img.shields.io/badge/-Lucide_Icons-8B5CF6?logo=lucide)            | Icon library for UI elements             |
+
+### 🧠 Machine Learning  
+| Tech             | Icon                                                                                 | Purpose                                  |  
+|-----------------|-------------------------------------------------------------------------------------|------------------------------------------|  
+| **Flask**       | ![Flask](https://img.shields.io/badge/-Flask-000000?logo=flask)                     | Backend for ML processing                |  
+| **Pandas**      | ![Pandas](https://img.shields.io/badge/-Pandas-150458?logo=pandas)                 | Data processing                          |  
+| **Scikit-Learn**| ![Scikit-Learn](https://img.shields.io/badge/-Scikit_Learn-F7931E?logo=scikit-learn) | Machine learning algorithms              |  
+| **NLTK**        | ![NLTK](https://img.shields.io/badge/-NLTK-32CD32?logo=python)                      | Natural language processing              |  
+| **NumPy**       | ![NumPy](https://img.shields.io/badge/-NumPy-013243?logo=numpy)                     | Numerical computing                      |
 
 ---
 
-## 🎯 Features
-✅ AI-powered search for notes 📖
-✅ Supports multiple subjects including Python, Math, Physics, Chemistry 🧪
-✅ Fast and efficient results ⚡
-✅ Clean & modern UI 🌟
-✅ Built using the latest web technologies 💻
+## 🚀 Installation & Setup
 
----
+### Prerequisites
+- Node.js & npm
+- Python 3
 
-## 📌 Installation
-```sh
+### 🔧 Frontend Setup
+```bash
 # Clone the repository
 git clone https://github.com/yourusername/academicpal-ai.git
-
-# Navigate to the frontend
-cd frontend
+cd academicpal-ai/frontend
 
 # Install dependencies
 npm install
 
-# Start the frontend
-tpn run dev
+# Start the development server
+npm run dev
+```
 
-# Navigate to the backend
+### 🧠 Backend (ML) Setup
+```bash
 cd ../backend
+
+# Create virtual environment
+python -m venv venv
+source venv/bin/activate  # On Windows, use `venv\Scripts\activate`
 
 # Install dependencies
 pip install -r requirements.txt
 
-# Run the backend
+# Run the Flask server
 python app.py
 ```
 
 ---
 
 ## 👨‍💻 Contributors
-- **[Hariharanath](https://github.com/Hariharanath)** - Founder & Lead Developer
-- **[Teja](https://github.com/teja-profile)** - ML Developer
 
-🚀 Feel free to contribute! Open a PR to improve the project. 😊
+| Contributor | GitHub Profile |
+|------------|---------------|
+| **Hariharanath** (Founder & Lead Developer) | [![GitHub](https://img.shields.io/badge/-GitHub-181717?logo=github&logoColor=white)](https://github.com/Hariharanath) |
+| **Teja** (ML Developer) | [![GitHub](https://img.shields.io/badge/-GitHub-181717?logo=github&logoColor=white)](https://github.com/Teja) |
+
+---
+
+## 📜 License
+This project is licensed under the **MIT License**.
+
+---
+
+🌟 **Star this repository** if you like AcademicPal AI and find it helpful! 🚀
