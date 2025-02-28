@@ -3,29 +3,40 @@ import { Send } from "lucide-react";
 
 interface ChatInputProps {
   onSendMessage: (message: string) => void;
+  onResponseReceived: (response: string) => void;
 }
 
-const ChatInput: React.FC<ChatInputProps> = ({ onSendMessage }) => {
+const ChatInput: React.FC<ChatInputProps> = ({ onSendMessage, onResponseReceived }) => {
   const [input, setInput] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleSend = async () => {
-    if (!input.trim()) return;
-
+    if (!input.trim() || isLoading) return;
+    
+    onSendMessage(input);
+    setIsLoading(true);
+    
     try {
-      const response = await fetch("http://localhost:5000/predict", {
+      const response = await fetch("http://localhost:5000/api/search", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ message: input }),
+        body: JSON.stringify({ query: input }),
       });
 
       const data = await response.json();
-      onSendMessage(data.response); // Send the API response to the chat window
-    } catch (error) {
-      console.error("Error sending message:", error);
-      onSendMessage("Error connecting to server.");
-    }
 
-    setInput("");
+      if (data.success) {
+        onResponseReceived(`🔍 Found notes for ${data.subject} (${data.cycle}): ${data.notes_link}`);
+      } else {
+        onResponseReceived("❌ No matching notes found. Try different keywords.");
+      }
+    } catch (error) {
+      console.error("Error fetching notes:", error);
+      onResponseReceived("⚠️ Error connecting to the server. Please try again later.");
+    } finally {
+      setIsLoading(false);
+      setInput("");
+    }
   };
 
   return (
@@ -33,12 +44,17 @@ const ChatInput: React.FC<ChatInputProps> = ({ onSendMessage }) => {
       <input
         type="text"
         className="flex-1 p-2 rounded-lg bg-gray-700 text-white focus:outline-none"
-        placeholder="Type your message..."
+        placeholder="Search for notes..."
         value={input}
         onChange={(e) => setInput(e.target.value)}
         onKeyDown={(e) => e.key === "Enter" && handleSend()}
+        disabled={isLoading}
       />
-      <button className="ml-2 p-2 bg-blue-600 rounded-lg" onClick={handleSend}>
+      <button 
+        className={`ml-2 p-2 rounded-lg ${isLoading ? 'bg-gray-600' : 'bg-blue-600 hover:bg-blue-700'}`} 
+        onClick={handleSend}
+        disabled={isLoading}
+      >
         <Send className="w-5 h-5 text-white" />
       </button>
     </div>

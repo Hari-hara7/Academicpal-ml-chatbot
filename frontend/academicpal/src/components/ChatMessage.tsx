@@ -1,17 +1,46 @@
-import { Bot, User } from "lucide-react";
+import React from "react";
 
-const ChatMessage: React.FC<ChatMessageProps> = ({ role, content }) => {
+interface ChatMessageProps {
+  message: string;
+  isUser: boolean;
+}
+
+const ChatMessage: React.FC<ChatMessageProps> = ({ message, isUser }) => {
+  // Function to format message and detect links
+  const formatMessage = (text: string) => {
+    if (text.includes("🔍 Found notes for") && text.includes("http")) {
+      const parts = text.split(": ");
+      const beforeLink = parts[0] + ": ";
+      const link = parts[1];
+
+      return (
+        <>
+          {beforeLink}
+          <a
+            href={link}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-blue-400 underline hover:text-blue-300"
+          >
+            {link}
+          </a>
+        </>
+      );
+    }
+    return text;
+  };
+
   return (
-    <div className={`flex ${role === "user" ? "justify-end" : "justify-start"}`}>
-      {role === "bot" && <Bot className="h-6 w-6 text-green-400 mr-2" />}
+    <div className={`flex w-full mb-3 ${isUser ? "justify-end" : "justify-start"}`}>
       <div
-        className={`p-3 rounded-xl max-w-lg shadow-md ${
-          role === "user" ? "bg-blue-600 text-white" : "bg-gray-700 text-white"
+        className={`max-w-lg px-4 py-2 rounded-2xl shadow-md ${
+          isUser
+            ? "bg-blue-500 text-white rounded-br-none" // User messages (right-aligned)
+            : "bg-gray-700 text-white rounded-bl-none" // Bot messages (left-aligned)
         }`}
       >
-        {content}
+        {formatMessage(message)}
       </div>
-      {role === "user" && <User className="h-6 w-6 text-blue-400 ml-2" />}
     </div>
   );
 };

@@ -1,7 +1,7 @@
-import Chatbot from "./pages/Chatbot";
+import NotesPage from "./components/NotesPage";
 
 function App() {
-  return <Chatbot />;
+  return <NotesPage />;
 }
 
 export default App;

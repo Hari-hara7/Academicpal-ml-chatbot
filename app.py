@@ -1,9 +1,9 @@
 from flask import Flask, render_template, request, jsonify
 import pandas as pd
-from model.ml_notes_finder_model import MLNotesFinderModel
-
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)  # Enable CORS for all routes
 
 # Load the dataset
 data = pd.DataFrame([
@@ -29,9 +29,49 @@ data = pd.DataFrame([
     {'Semester': '1st', 'Cycle': 'Chemistry', 'Subject': 'EV', 'Keywords': 'ev, environmental studies', 'Notes Link': 'https://drive.google.com/drive/folders/1EBRbMBS6r42GQ60k8O4AdkiC_0muZ1TF'},
 ])
 
-# Initialize the ML model
+# Create a simplified ML model (no need for scikit-learn if we just want a basic search)
+class MLNotesFinderModel:
+    def __init__(self, data_df):
+        self.data_df = data_df
+        
+    def get_notes_link(self, query):
+        query = query.lower()
+        best_match = None
+        best_score = 0
+        
+        for _, row in self.data_df.iterrows():
+            # Check if query matches any keywords, subject, or cycle
+            search_text = (row['Subject'].lower() + ' ' + 
+                           row['Keywords'].lower() + ' ' + 
+                           row['Cycle'].lower() + ' ' + 
+                           row['Semester'].lower())
+            
+            # Simple scoring - count how many words match
+            query_words = query.split()
+            score = sum(1 for word in query_words if word in search_text)
+            
+            if score > best_score:
+                best_score = score
+                best_match = row
+        
+        if best_match is None or best_score == 0:
+            return {
+                'success': False,
+                'message': 'No matching notes found.'
+            }
+        
+        return {
+            'success': True,
+            'semester': best_match['Semester'],
+            'cycle': best_match['Cycle'],
+            'subject': best_match['Subject'],
+            'keywords': best_match['Keywords'],
+            'notes_link': best_match['Notes Link']
+        }
+
+# Initialize the model
 model = MLNotesFinderModel(data_df=data)
-print("Model training completed successfully!")
+print("Model initialized successfully!")
 
 @app.route('/')
 def index():
@@ -65,4 +105,4 @@ def api_search():
     return jsonify(result)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, host='0.0.0.0', port=5000)
