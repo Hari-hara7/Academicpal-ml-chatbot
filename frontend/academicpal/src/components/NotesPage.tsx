@@ -11,14 +11,14 @@ interface Message {
 
 const NotesGPT: React.FC = () => {
   const [messages, setMessages] = useState<Message[]>([
-    { 
-      text: "👋 Welcome to AcademicPal! I'm your AI-powered notes assistant. Ask me anything about your subjects!", 
-      isUser: false 
+    {
+      text: "👋 Welcome to AcademicPal! I'm your AI-powered notes assistant. Ask me anything about your subjects!",
+      isUser: false,
     },
     {
-      text: "Try searching for 'python', 'math', 'physics', or 'chemistry'.", 
-      isUser: false 
-    }
+      text: "Try searching for 'python', 'math', 'physics', or 'chemistry'.",
+      isUser: false,
+    },
   ]);
   const [showWelcome, setShowWelcome] = useState(true);
   const messagesEndRef = useRef<HTMLDivElement>(null);
@@ -44,15 +44,13 @@ const NotesGPT: React.FC = () => {
   const fetchBotResponse = async (message: string): Promise<string> => {
     const lowerCaseMessage = message.toLowerCase();
     if (lowerCaseMessage.includes("python")) {
-      return "🔍 Found notes for Python: https://drive.google.com/drive/folders/your-link";
+      return "🔍 Found notes for Python: https://academicpal.com/python-notes";
     } else if (lowerCaseMessage.includes("math")) {
-      return "📚 Math notes include Algebra, Calculus, and Linear Algebra.";
+      return "📚 Math notes: Algebra, Calculus & Linear Algebra.";
     } else if (lowerCaseMessage.includes("physics")) {
-      return "🛸 Check out Physics notes: https://drive.google.com/drive/folders/your-link\n🔍 Found notes for New Physics (Physics): https://drive.google.com/drive/folders/1e-LQMg0B7XF9wJDfWg4vWwc8SZg16LXt";
+      return "🛸 Check out Physics notes here: https://academicpal.com/physics";
     } else if (lowerCaseMessage.includes("chemistry")) {
-      return "⚗️ Chemistry notes cover Organic and Inorganic concepts.\n🔍 Found notes for Chemistry: https://drive.google.com/drive/folders/11s9sgR-Hpb40p2tVlsetlBWcE6UPIubO";
-    } else if (lowerCaseMessage.includes("psp")) {
-      return "🔍 Found notes for Problem Solving (Physics): https://drive.google.com/drive/u/5/folders/1yKkXdRkNXuui8Ysq7hCygAPak9OS49O_";
+      return "⚗️ Chemistry notes: Organic & Inorganic concepts.";
     } else {
       return "🤔 I couldn’t find anything. Try another subject or keyword!";
     }
@@ -73,7 +71,7 @@ const NotesGPT: React.FC = () => {
             href={part}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-blue-400 underline hover:text-blue-300"
+            className="text-blue-400 underline hover:text-blue-300 break-all"
           >
             {part}
           </a>
@@ -93,32 +91,39 @@ const NotesGPT: React.FC = () => {
 
       {/* Welcome Screen */}
       {showWelcome ? (
-        <div className="flex flex-col items-center justify-center flex-1 text-center">
-          <img src={logo} alt="Chatbot Logo" className="w-20 h-20 mb-4" />
-          <h2 className="text-2xl font-semibold">Hello! I'm your AI notes assistant</h2>
-          <p className="text-gray-400 mt-2">
+        <div className="flex flex-col items-center justify-center flex-1 text-center px-4">
+          <img src={logo} alt="Chatbot Logo" className="w-20 h-20 mb-4 animate-fade-in" />
+          <h2 className="text-xl sm:text-2xl font-semibold">
+            Hello! I'm your AI notes assistant
+          </h2>
+          <p className="text-gray-400 mt-2 text-sm sm:text-base">
             Ask me anything about <b>B.Tech Subjects</b>! <br />
-            <span className="text-sm text-gray-500">
-              Explore Python, Math, Physics & more.
+            <span className="text-xs sm:text-sm text-gray-500">
+              Explore Notes.
             </span>
           </p>
           <div className="flex mt-4 space-x-3">
-            <MessageCircle className="h-6 w-6 text-blue-500" />
-            <Send className="h-6 w-6 text-green-500" />
+            <MessageCircle className="h-6 w-6 text-blue-500 animate-pulse" />
+            <Send className="h-6 w-6 text-green-500 animate-bounce" />
           </div>
         </div>
       ) : (
         // Chat Messages
         <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-gray-900">
           {messages.map((msg, index) => (
-            <div key={index} className={`flex items-start space-x-3 ${msg.isUser ? "justify-end" : ""}`}>
+            <div
+              key={index}
+              className={`flex items-start space-x-3 ${
+                msg.isUser ? "justify-end" : ""
+              }`}
+            >
               {msg.isUser ? (
                 <User className="h-6 w-6 text-green-500" />
               ) : (
                 <Bot className="h-6 w-6 text-blue-500" />
               )}
               <div
-                className={`p-3 rounded-lg max-w-xs ${
+                className={`p-3 rounded-lg max-w-full sm:max-w-xs text-sm sm:text-base break-words ${
                   msg.isUser ? "bg-green-600" : "bg-gray-800"
                 }`}
               >
