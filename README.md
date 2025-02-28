@@ -13,7 +13,9 @@
 
 
 
-<img src="poster.jpeg" alt="AcademicPal AI" width="600" height="auto">
+<p align="center">
+  <img src="poster.jpeg" alt="AcademicPal AI" width="600" height="auto">
+</p>
 
 
 ---
