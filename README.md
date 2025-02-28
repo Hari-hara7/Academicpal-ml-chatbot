@@ -1,6 +1,6 @@
 # 📚 AcademicPal AI Search
 
-![AI](poster.jpeg)
+![AcademicPal AI](responsive.png)
 
 🚀 **AcademicPal AI Search** is an AI-powered assistant designed to help students find notes, resources, and explanations for B.Tech subjects. Built with an advanced **machine learning model** and a modern **Vite + React** frontend, it delivers seamless and intelligent search capabilities.
 
@@ -13,7 +13,8 @@
 
 
 
-![AcademicPal AI](Designer (4).jpeg)
+<img src="poster.jpeg" alt="AcademicPal AI" width="600" height="auto">
+
 
 ---
 
