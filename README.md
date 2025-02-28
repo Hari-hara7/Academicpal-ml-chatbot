@@ -1,6 +1,6 @@
 # 📚 AcademicPal AI Search
 
-![AcademicPal AI](https://your-image-url.com/logo.png)
+![AcademicPal AI](responsive.png)
 
 🚀 **AcademicPal AI Search** is an AI-powered assistant designed to help students find notes, resources, and explanations for B.Tech subjects. Built with an advanced **machine learning model** and a modern **Vite + React** frontend, it delivers seamless and intelligent search capabilities.
 
@@ -10,6 +10,10 @@
 - ✨ Fully responsive UI with **React + Tailwind CSS**
 - ⚡ Fast and efficient with **Flask-based ML model**
 - 🔗 Detects and formats links in responses automatically
+
+
+
+![AcademicPal AI](Designer (4).jpeg)
 
 ---
 
@@ -44,7 +48,7 @@
 ### 🔧 Frontend Setup
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/academicpal-ai.git
+git clone https://github.com/Hari-hara7/Academicpal-ml-chatbot.git
 cd academicpal-ai/frontend
 
 # Install dependencies
@@ -75,8 +79,8 @@ python app.py
 
 | Contributor | GitHub Profile |
 |------------|---------------|
-| **Hariharanath** (Founder & Lead Developer) | [![GitHub](https://img.shields.io/badge/-GitHub-181717?logo=github&logoColor=white)](https://github.com/Hariharanath) |
-| **Teja** (ML Developer) | [![GitHub](https://img.shields.io/badge/-GitHub-181717?logo=github&logoColor=white)](https://github.com/Teja) |
+| **Hariharanath** (Founder & Lead Developer) | [![GitHub](https://img.shields.io/badge/-GitHub-181717?logo=github&logoColor=white)](https://github.com/Hari-hara7) |
+| **Teja** (ML Developer) | [![GitHub](https://img.shields.io/badge/-GitHub-181717?logo=github&logoColor=white)](https://github.com/GunaTeja777) |
 
 ---
 
