@@ -17,7 +17,7 @@ const ChatInput: React.FC<ChatInputProps> = ({ onSendMessage, onResponseReceived
     setIsLoading(true);
     
     try {
-      const response = await fetch("http://localhost:5000/api/search", {
+      const response = await fetch("https://academicpal-ml-chatbot-3.onrender.com/api/search", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ query: input }),
