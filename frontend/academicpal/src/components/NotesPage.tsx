@@ -84,11 +84,10 @@ const NotesGPT: React.FC = () => {
   return (
     <div className="flex flex-col h-screen bg-gray-900 text-white">
       {/* Header */}
-      <div className="p-4 flex items-center bg-gray-800 shadow-md">
-        <img src={logo} alt="AcademicPal Logo" className="h-10 w-10 mr-3" />
-        <h1 className="text-xl font-semibold">AcademicPal AI</h1>
-      </div>
-
+      <div className="p-4 flex items-center bg-dark-800 shadow-md border border-transparent">
+  <img src={logo} alt="AcademicPal Logo" className="h-10 w-10 mr-3" />
+  <h1 className="text-xl font-semibold">AcademicPal AI</h1>
+</div>
       {/* Welcome Screen */}
       {showWelcome ? (
         <div className="flex flex-col items-center justify-center flex-1 text-center px-4">
