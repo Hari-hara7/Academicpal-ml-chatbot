@@ -3,6 +3,7 @@ import ChatInput from "./ChatInput";
 import ChatMessage from "./ChatMessage";
 import { Send, MessageCircle, User, Bot } from "lucide-react";
 import logo from "../assets/logo_academic_pal-removebg-preview.png";
+import LogoLoader from "./LogoLoader";
 
 interface Message {
   text: string;
@@ -21,9 +22,16 @@ const NotesGPT: React.FC = () => {
     },
   ]);
   const [showWelcome, setShowWelcome] = useState(true);
+  const [loading, setLoading] = useState(true);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
-  // Auto-scroll to latest message
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 4000);
+    return () => clearTimeout(timer);
+  }, []);
+
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   };
@@ -83,59 +91,62 @@ const NotesGPT: React.FC = () => {
 
   return (
     <div className="flex flex-col h-screen bg-gray-900 text-white">
-      {/* Header */}
-      <div className="p-4 flex items-center bg-dark-800 shadow-md border border-transparent">
-  <img src={logo} alt="AcademicPal Logo" className="h-10 w-10 mr-3" />
-  <h1 className="text-xl font-semibold">AcademicPal AI</h1>
-</div>
-      {/* Welcome Screen */}
-      {showWelcome ? (
-        <div className="flex flex-col items-center justify-center flex-1 text-center px-4">
-          <img src={logo} alt="Chatbot Logo" className="w-20 h-20 mb-4 animate-fade-in" />
-          <h2 className="text-xl sm:text-2xl font-semibold">
-            Hello! I'm your AI notes assistant
-          </h2>
-          <p className="text-gray-400 mt-2 text-sm sm:text-base">
-            Ask me anything about <b>B.Tech Subjects</b>! <br />
-            <span className="text-xs sm:text-sm text-gray-500">
-              Explore Notes.
-            </span>
-          </p>
-          <div className="flex mt-4 space-x-3">
-            <MessageCircle className="h-6 w-6 text-blue-500 animate-pulse" />
-            <Send className="h-6 w-6 text-green-500 animate-bounce" />
-          </div>
-        </div>
+      {loading ? (
+        <LogoLoader />
       ) : (
-        // Chat Messages
-        <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-gray-900">
-          {messages.map((msg, index) => (
-            <div
-              key={index}
-              className={`flex items-start space-x-3 ${
-                msg.isUser ? "justify-end" : ""
-              }`}
-            >
-              {msg.isUser ? (
-                <User className="h-6 w-6 text-green-500" />
-              ) : (
-                <Bot className="h-6 w-6 text-blue-500" />
-              )}
-              <div
-                className={`p-3 rounded-lg max-w-full sm:max-w-xs text-sm sm:text-base break-words ${
-                  msg.isUser ? "bg-green-600" : "bg-gray-800"
-                }`}
-              >
-                {renderMessageWithLinks(msg.text)}
+        <>
+          <div className="p-4 flex items-center bg-dark-800 shadow-md border border-transparent">
+            <img src={logo} alt="AcademicPal Logo" className="h-10 w-10 mr-3" />
+            <h1 className="text-xl font-semibold">AcademicPal AI</h1>
+          </div>
+
+          {showWelcome ? (
+            <div className="flex flex-col items-center justify-center flex-1 text-center px-4">
+              <img src={logo} alt="Chatbot Logo" className="w-20 h-20 mb-4 animate-fade-in" />
+              <h2 className="text-xl sm:text-2xl font-semibold">
+                Hello! I'm your AI notes assistant
+              </h2>
+              <p className="text-gray-400 mt-2 text-sm sm:text-base">
+                Ask me anything about <b>B.Tech Subjects</b>! <br />
+                <span className="text-xs sm:text-sm text-gray-500">
+                  Explore Notes.
+                </span>
+              </p>
+              <div className="flex mt-4 space-x-3">
+                <MessageCircle className="h-6 w-6 text-blue-500 animate-pulse" />
+                <Send className="h-6 w-6 text-green-500 animate-bounce" />
               </div>
             </div>
-          ))}
-          <div ref={messagesEndRef} />
-        </div>
-      )}
+          ) : (
+            <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-gray-900">
+              {messages.map((msg, index) => (
+                <div
+                  key={index}
+                  className={`flex items-start space-x-3 ${
+                    msg.isUser ? "justify-end" : ""
+                  }`}
+                >
+                  {msg.isUser ? (
+                    <User className="h-6 w-6 text-green-500" />
+                  ) : (
+                    <Bot className="h-6 w-6 text-blue-500" />
+                  )}
+                  <div
+                    className={`p-3 rounded-lg max-w-full sm:max-w-xs text-sm sm:text-base break-words ${
+                      msg.isUser ? "bg-green-600" : "bg-gray-800"
+                    }`}
+                  >
+                    {renderMessageWithLinks(msg.text)}
+                  </div>
+                </div>
+              ))}
+              <div ref={messagesEndRef} />
+            </div>
+          )}
 
-      {/* Chat Input */}
-      <ChatInput onSendMessage={handleSendMessage} onResponseReceived={handleResponse} />
+          <ChatInput onSendMessage={handleSendMessage} onResponseReceived={handleResponse} />
+        </>
+      )}
     </div>
   );
 };
