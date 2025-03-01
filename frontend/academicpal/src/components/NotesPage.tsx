@@ -44,11 +44,11 @@ const NotesGPT: React.FC = () => {
   const fetchBotResponse = async (message: string): Promise<string> => {
     const lowerCaseMessage = message.toLowerCase();
     if (lowerCaseMessage.includes("python")) {
-      return "🔍 Found notes for Python: https://academicpal.com/python-notes";
+      return "🔍 Found notes for Python: ";
     } else if (lowerCaseMessage.includes("math")) {
       return "📚 Math notes: Algebra, Calculus & Linear Algebra.";
     } else if (lowerCaseMessage.includes("physics")) {
-      return "🛸 Check out Physics notes here: https://academicpal.com/physics";
+      return "🛸 Check out Physics notes here: ";
     } else if (lowerCaseMessage.includes("chemistry")) {
       return "⚗️ Chemistry notes: Organic & Inorganic concepts.";
     } else {
