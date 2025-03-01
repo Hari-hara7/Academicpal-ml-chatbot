@@ -1,10 +1,9 @@
-// src/components/LogoLoader.tsx
 import { motion } from "framer-motion";
 import logo from "../assets/logo_academic_pal-removebg-preview.png";
 
 const LogoLoader: React.FC = () => {
   return (
-    <div className="flex flex-col justify-center items-center h-screen bg-black text-cyan-400 font-[Poppins] p-4">
+    <div className="flex flex-col justify-center items-center h-screen bg-black text-cyan-400 p-4 font-[Poppins] sm:font-[Orbitron]">
       
       {/* Glowing Logo */}
       <motion.img
@@ -28,7 +27,7 @@ const LogoLoader: React.FC = () => {
 
       {/* Interactive Title */}
       <motion.h1
-        className="text-4xl sm:text-6xl font-extrabold tracking-wide relative z-10 text-center"
+        className="text-4xl sm:text-6xl font-extrabold tracking-wide relative z-10 text-center sm:font-bold"
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1, ease: "easeOut", delay: 0.5 }}
